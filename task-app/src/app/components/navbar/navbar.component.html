@@ -1,0 +1,15 @@
+<div class="flex justify-between items-center p-5 w-full">
+    <div class="flex items-center gap-2">
+        <app-chat-svg></app-chat-svg>
+        <p class="text-lg font-semibold uppercase tracking-wider text-slate-600">
+            Chat
+        </p>
+    </div>
+    <ng-container *ngIf="authService.user">
+        <div class="flex items-center gap-4">
+            <p class="text-lg font-bold">Hi, {{authService.user.userName}}!</p>
+            <!-- TODO: 5 -->
+            <button class="w-max px-10 py-1 rounded bg-slate-500 text-white uppercase">Logout</button>
+        </div>
+    </ng-container>
+</div>

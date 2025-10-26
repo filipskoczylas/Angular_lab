@@ -1,0 +1,18 @@
+<div class="flex flex-col gap-4 p-4 rounded bg-slate-300 border-2 border-slate-400">
+    <div class="flex gap-2 items-center justify-between">
+        <p class="text-xl font-semibold tracking-wider">Users</p>
+        <div class="flex flex-col w-[200px]">
+            <input type="text" [(ngModel)]="searchText" class="rounded h-8 px-4" placeholder="Search">
+        </div>
+    </div>
+    <div class="flex flex-wrap gap-2">
+        <!-- TODO: 9 -->
+        <button *ngFor="let user of users | userSort"
+            class="flex flex-col items-center px-3 py-1 rounded"
+            [ngClass]="{'bg-slate-100': user.userId === selectedUser?.userId}" (click)="userClicked.emit(user)">
+            <app-user-online-svg [width]=40 [height]=40 [class]="'fill-emerald-800'" *ngIf="user.userIsOnline"></app-user-online-svg>
+            <app-user-offline-svg  [width]=40 [height]=40 [class]="'fill-slate-500'"  *ngIf="!user.userIsOnline"></app-user-offline-svg>
+            <p>{{user.userName}}</p>
+        </button>
+    </div>
+</div>
